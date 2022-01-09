@@ -2,6 +2,19 @@ resource "aws_security_group" "lcsecuritygroup" {
   name        = "lcsecuritygroup"
   description = "Allow TLS inbound traffic"
   vpc_id      = module.networking.vpc_id
+  ingress {
+      from_port = 22
+      to_port = 22
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+      from_port = 80
+      to_port = 80
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     description      = "TLS from VPC"
@@ -29,6 +42,19 @@ resource "aws_security_group" "albsecuritygroup" {
   name        = "albsecuritygroup"
   description = "Allow TLS inbound traffic"
   vpc_id      = module.networking.vpc_id
+  ingress {
+          from_port = 22
+          to_port = 22
+          protocol = "tcp"
+          cidr_blocks = ["0.0.0.0/0"]
+      }
+
+  ingress {
+      from_port = 80
+      to_port = 80
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     description      = "TLS from VPC"
@@ -61,7 +87,7 @@ resource "aws_security_group" "MYSQLsg" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["116.0.0.0/16"]
+    cidr_blocks = ["0.0.0.0/0","0.0.0.0/0"]
   }
   egress {
     from_port   = 0

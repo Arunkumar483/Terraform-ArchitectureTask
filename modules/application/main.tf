@@ -23,7 +23,10 @@ resource "aws_launch_configuration" "launchconfig" {
     create_before_destroy = true
   }
   key_name = var.key_name
-  user_data = templatefile("phpmysqlcon.sh.tpl",{})
+  user_data = templatefile("phpmysqlcon.sh.tpl",{
+    rds_dns     = "${var.rds_dns}",
+    db_username = "arunkumar",
+    db_password = "arunkumar"})
   
 }
 

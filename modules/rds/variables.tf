@@ -36,18 +36,18 @@ variable "dbname" {
 variable "username" {
   description = "username of the db server"
   type        = string
-  default     = "arunkumar"
+  default     = "root"
 }
 
 variable "password" {
   description = "password of the db server (should be 8 characters)"
   type        = string
-  default     = "arunkumar"
+  default     = "rootroot"
 }
 variable "default_password" {
   description = "default password of the db server (should be 8 characters)"
   type        = string
-  default     = "arunkumar"
+  default     = "rootroot"
 }
 
 variable "port" {
